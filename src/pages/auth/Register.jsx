@@ -151,7 +151,7 @@ const Register = () => {
                         {errors.confirmPassword && <p className="text-red-400 text-sm mt-1">{errors.confirmPassword.message}</p>}
                     </div>
                     <div className="flex justify-center" data-aos="zoom-in">
-                        <ReCAPTCHA ref={recaptchaRef} sitekey="6LeOa9cqAAAAAJ_1VheX_CXbOwzc-PEWWEk-f6Ca" />
+                        <ReCAPTCHA ref={recaptchaRef} sitekey="6LfkIeAqAAAAAPfJ9mnmWYR4-OSct2m_2qAwheSt" />
                     </div>
                     <button type="submit" className="w-full py-2 px-5 rounded-xl bg-green-500 text-white hover:bg-green-600 transition-all flex items-center justify-center gap-2" disabled={isSubmitting} data-aos="fade-up">
                         <FontAwesomeIcon icon={faCheckCircle} />
