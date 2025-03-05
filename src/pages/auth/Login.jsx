@@ -10,6 +10,7 @@ import "aos/dist/aos.css"; // Import CSS ของ AOS
 const Login = () => {
     const navigate = useNavigate();
     const actionLogin = useShopStore((state) => state.actionLogin);
+    console.log("🔍 useShopStore actionLogin:", actionLogin);
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -35,8 +36,16 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await actionLogin(form);
+            console.log("✅ Login Response:", res); // Debugging response
+    
+            if (!res || !res.data || !res.data.payload) {
+                throw new Error("Invalid response from server");
+            }
+    
             const role = res.data.payload.role;
+            console.log("🔄 Redirecting to:", role); // Debugging role
             roleRedirect(role);
+    
             Swal.fire({
                 icon: "success",
                 title: "เข้าสู่ระบบสำเร็จ!",
@@ -44,6 +53,7 @@ const Login = () => {
                 confirmButtonText: "OK",
             });
         } catch (err) {
+            console.error("❌ Login Error:", err.response?.data || err.message);
             Swal.fire({
                 icon: "error",
                 title: "เกิดข้อผิดพลาด!",
@@ -54,9 +64,11 @@ const Login = () => {
 
     const roleRedirect = (role) => {
         if (role === "admin") {
+            console.log("🔄 Navigating to /admin...");
             navigate("/admin");
         } else {
-            navigate(-1);
+            console.log("🔄 Navigating to Home...");
+            navigate("/home"); // เปลี่ยนจาก navigate(-1) เป็นหน้าหลักที่ชัดเจน
         }
     };
 
