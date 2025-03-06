@@ -40,7 +40,7 @@ const HomeUser = () => {
                 </Link>
                 <Link to="/user/logout" className="btn btn-error flex gap-2 items-center">
                     <FaUser />
-                    Logout
+                    Logoutt
                 </Link>
             </div>
         </div>
