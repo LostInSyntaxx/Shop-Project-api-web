@@ -12,14 +12,15 @@ const shopStore = (set, get)=> ({
     categories: [],
     products: [],
     carts: [],
-    logout: ()=> {
+    logout: () => {
         set({
             user: null,
             token: null,
             categories: [],
             products: [],
             carts: [],
-        })
+        });
+        useShopStore.persist.clearStorage();
     },
     actionAddtoCart: (product)=> {
         const carts = get().carts
@@ -88,9 +89,8 @@ const shopStore = (set, get)=> ({
 
 const useShop = {
     name: 'Shop-Project - main',
-    storage: createJSONStorage(()=>localStorage)
-
-}
+    storage: createJSONStorage(() => sessionStorage) // เปลี่ยนเป็น sessionStorage
+};
 
 const useShopStore = create(persist(shopStore,useShop))
 

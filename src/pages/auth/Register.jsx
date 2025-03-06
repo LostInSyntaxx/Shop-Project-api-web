@@ -13,7 +13,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "tailwindcss/tailwind.css";
 
-// 📌 Validate Schema
 const passwordSchema = z
     .string()
     .min(6, { message: "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร" })
@@ -94,7 +93,6 @@ const Register = () => {
                     <FontAwesomeIcon icon={faUserPlus} /> สมัครสมาชิก
                 </h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    {/* Email Input */}
                     <div className="relative">
                         <FontAwesomeIcon icon={faEnvelope} className="absolute left-3 top-3 text-white/50" />
                         <input
@@ -105,8 +103,6 @@ const Register = () => {
                         />
                         {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>}
                     </div>
-
-                    {/* Password Input */}
                     <div className="relative">
                         <FontAwesomeIcon icon={faLock} className="absolute left-3 top-3 text-white/50" />
                         <input
@@ -120,8 +116,6 @@ const Register = () => {
                             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                         </button>
                     </div>
-
-                    {/* Confirm Password Input */}
                     <div className="relative">
                         <FontAwesomeIcon icon={faLock} className="absolute left-3 top-3 text-white/50" />
                         <input
@@ -135,13 +129,9 @@ const Register = () => {
                         </button>
                         {errors.confirmPassword && <p className="text-red-400 text-sm mt-1">{errors.confirmPassword.message}</p>}
                     </div>
-
-                    {/* ReCAPTCHA */}
                     <div className="flex justify-center">
                         <ReCAPTCHA ref={recaptchaRef} sitekey="6LfkIeAqAAAAAPfJ9mnmWYR4-OSct2m_2qAwheSt" />
                     </div>
-
-                    {/* Submit Button */}
                     <button type="submit" className="btn btn-success w-full flex items-center gap-2">
                         <FontAwesomeIcon icon={faCheckCircle} />
                         {isSubmitting ? "กำลังสมัคร..." : "สมัครสมาชิก"}
