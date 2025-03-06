@@ -44,7 +44,7 @@ const HomeUser = () => {
                 </Link>
             </div>
         </div>
-    );
+    );  
 };
 
 export default HomeUser;
